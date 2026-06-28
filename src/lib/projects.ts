@@ -1,0 +1,166 @@
+import { Locale } from "@/lib/i18n";
+
+export type ProjectLink = {
+  label: string;
+  href: string;
+};
+
+type LocalizedText = Record<Locale, string>;
+type LocalizedList = Record<Locale, string[]>;
+
+export type PortfolioProject = {
+  slug: string;
+  title: LocalizedText;
+  type: "company" | "personal";
+  summary: LocalizedText;
+  stack: string[];
+  impact: LocalizedList;
+  links: ProjectLink[];
+};
+
+export const projects: PortfolioProject[] = [
+  {
+    slug: "google-play-music-app",
+    title: {
+      en: "Google Play Music App",
+      ar: "تطبيق موسيقى على Google Play",
+      ru: "Музыкальное приложение в Google Play",
+    },
+    type: "personal",
+    summary: {
+      en: "Mobile music application built with Java and XML, focused on reliable playback UX, clean navigation, and production delivery.",
+      ar: "تطبيق موسيقى للموبايل مبني بـ Java وXML مع تركيز على تجربة تشغيل موثوقة وتنقل واضح وجودة جاهزة للإطلاق.",
+      ru: "Мобильное музыкальное приложение на Java и XML с упором на надежное воспроизведение, удобную навигацию и production-качество.",
+    },
+    stack: ["Java", "XML", "Android", "UI/UX", "Google Play"],
+    impact: {
+      en: [
+        "Published a real mobile product to Google Play",
+        "Implemented maintainable code structure and reusable UI patterns",
+        "Improved app usability through practical debugging and flow refinement",
+      ],
+      ar: [
+        "نشر منتج موبايل حقيقي على Google Play",
+        "تنفيذ هيكل كود قابل للصيانة وأنماط واجهة قابلة لإعادة الاستخدام",
+        "تحسين سهولة الاستخدام عبر تصحيح عملي وتطوير تدفقات التطبيق",
+      ],
+      ru: [
+        "Опубликован реальный мобильный продукт в Google Play",
+        "Реализована поддерживаемая структура кода и переиспользуемые UI-паттерны",
+        "Улучшен UX за счет практичной отладки и оптимизации пользовательских сценариев",
+      ],
+    },
+    links: [
+      { label: "Google Play", href: "https://play.google.com/store/apps" },
+      { label: "GitHub", href: "https://github.com/alwazirmbusiness-dev" },
+    ],
+  },
+  {
+    slug: "restaurant-qr-system",
+    title: {
+      en: "Restaurant QR Order & Payment Platform",
+      ar: "منصة طلب ودفع المطاعم عبر QR",
+      ru: "Платформа QR-заказов и оплат для ресторанов",
+    },
+    type: "company",
+    summary: {
+      en: "Multi-venue ordering and payment platform with real-time kitchen workflow and role-based admin operations.",
+      ar: "منصة متعددة الفروع للطلبات والدفع مع تدفق مطبخ لحظي وإدارة صلاحيات حسب الدور.",
+      ru: "Платформа заказов и платежей для нескольких точек с real-time workflow кухни и ролевой админ-панелью.",
+    },
+    stack: ["Next.js", "Node.js", "PostgreSQL", "Docker", "Yookassa", "Stripe"],
+    impact: {
+      en: [
+        "Handled multi-venue workflows and live kitchen updates",
+        "Improved session reliability and checkout completion",
+        "Delivered secure payment flows and reconciliation",
+      ],
+      ar: [
+        "إدارة تدفقات العمل متعددة الفروع وتحديثات المطبخ المباشرة",
+        "تحسين استمرارية الجلسات ورفع إتمام عملية الدفع",
+        "تنفيذ مسارات دفع آمنة وآليات مطابقة مالية",
+      ],
+      ru: [
+        "Реализованы процессы для нескольких заведений и live-обновления кухни",
+        "Повышена стабильность сессий и завершение checkout",
+        "Внедрены безопасные платежные сценарии и сверка транзакций",
+      ],
+    },
+    links: [
+      { label: "Case Study", href: "#case-study" },
+      { label: "Screenshots", href: "#screenshots" },
+    ],
+  },
+  {
+    slug: "java-payment-api",
+    title: {
+      en: "Java Payment API",
+      ar: "واجهة دفع Java API",
+      ru: "Java Payment API",
+    },
+    type: "personal",
+    summary: {
+      en: "Personal Spring Boot application focused on payment orchestration, validation, testing, and production-ready architecture.",
+      ar: "تطبيق Spring Boot شخصي يركز على تنسيق عمليات الدفع والتحقق والاختبارات ومعمارية جاهزة للإنتاج.",
+      ru: "Личное приложение на Spring Boot с фокусом на оркестрацию платежей, валидацию, тесты и production-архитектуру.",
+    },
+    stack: ["Java", "Spring Boot", "PostgreSQL", "JUnit", "Docker"],
+    impact: {
+      en: [
+        "Layered architecture with strong validation and error handling",
+        "Integration tests and CI pipeline for release confidence",
+        "Ready for live deployment and demo usage",
+      ],
+      ar: [
+        "معمارية طبقية مع تحقق قوي ومعالجة أخطاء فعالة",
+        "اختبارات تكامل وخط CI لثقة أعلى في الإصدارات",
+        "جاهز للنشر والعرض المباشر",
+      ],
+      ru: [
+        "Слоистая архитектура с надежной валидацией и обработкой ошибок",
+        "Интеграционные тесты и CI-пайплайн для стабильных релизов",
+        "Готов к live-деплою и демонстрации",
+      ],
+    },
+    links: [
+      { label: "GitHub", href: "https://github.com/" },
+      { label: "Live Demo", href: "https://" },
+    ],
+  },
+  {
+    slug: "realtime-notification-service",
+    title: {
+      en: "Real-Time Notification Service",
+      ar: "خدمة إشعارات لحظية",
+      ru: "Сервис real-time уведомлений",
+    },
+    type: "personal",
+    summary: {
+      en: "Backend-first service for real-time events with WebSocket broadcasting, persistence, and resilient delivery.",
+      ar: "خدمة تركز على الباك إند للأحداث اللحظية مع WebSocket وتخزين مستمر وتسليم موثوق.",
+      ru: "Backend-first сервис для событий в реальном времени с WebSocket, постоянным хранением и надежной доставкой.",
+    },
+    stack: ["Java", "WebSocket", "Redis", "PostgreSQL", "Docker"],
+    impact: {
+      en: [
+        "Designed event pipeline for low-latency updates",
+        "Implemented retry-safe delivery and durable message storage",
+        "Improved observability with structured logs",
+      ],
+      ar: [
+        "تصميم خط أحداث بزمن استجابة منخفض للتحديثات اللحظية",
+        "تنفيذ تسليم آمن مع إعادة المحاولة وتخزين رسائل دائم",
+        "تحسين المراقبة التشغيلية عبر سجلات منظمة",
+      ],
+      ru: [
+        "Спроектирован event-пайплайн с низкой задержкой",
+        "Реализована надежная доставка с retry и долговременным хранением сообщений",
+        "Улучшена наблюдаемость за счет структурированных логов",
+      ],
+    },
+    links: [
+      { label: "GitHub", href: "https://github.com/" },
+      { label: "Architecture", href: "#architecture" },
+    ],
+  },
+];
