@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { I18nProvider } from "@/contexts/I18nContext";
 import { SiteChrome } from "@/components/SiteChrome";
 import "./globals.css";
@@ -37,6 +38,7 @@ export default function RootLayout({
         <I18nProvider>
           <SiteChrome>{children}</SiteChrome>
         </I18nProvider>
+        <Analytics />
       </body>
     </html>
   );
