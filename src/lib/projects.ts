@@ -15,6 +15,7 @@ export type PortfolioProject = {
   summary: LocalizedText;
   stack: string[];
   impact: LocalizedList;
+  screenshots?: string[];
   links: ProjectLink[];
 };
 
@@ -51,7 +52,7 @@ export const projects: PortfolioProject[] = [
       ],
     },
     links: [
-      { label: "Google Play", href: "https://play.google.com/store/apps" },
+      { label: "Google Play", href: "https://play.google.com/store/apps/dev?id=6095127258650360884" },
       { label: "GitHub", href: "https://github.com/alwazirmbusiness-dev" },
     ],
   },
@@ -87,7 +88,7 @@ export const projects: PortfolioProject[] = [
       ],
     },
     links: [
-      { label: "Case Study", href: "#case-study" },
+      { label: "live Demo", href: "" },
       { label: "Screenshots", href: "#screenshots" },
     ],
   },

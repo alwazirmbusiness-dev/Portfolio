@@ -28,7 +28,7 @@ export default function HomePage() {
             <p className="hero-desc">{t.hero.desc}</p>
             <div className="hero-actions">
               <Link href="/contact" className="btn btn-primary">{t.hero.ctaTalk} ↗</Link>
-              <a href="/cv.pdf" className="btn btn-outline" download>{t.hero.ctaCv} ↓</a>
+              <a href="/Аль-Вазир Мухамед cv.pdf" className="btn btn-outline" download>{t.hero.ctaCv} ↓</a>
             </div>
             <div className="social-strip">
               <span className="social-divider"></span>

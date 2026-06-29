@@ -1,14 +1,18 @@
 "use client";
 
 import { useI18n } from "@/contexts/I18nContext";
+import { usePathname, useRouter } from "next/navigation";
 import { PortfolioProject } from "@/lib/projects";
 
 type ProjectCardProps = {
   project: PortfolioProject;
+  onOpenGallery?: (project: PortfolioProject) => void;
 };
 
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({ project, onOpenGallery }: ProjectCardProps) {
   const { locale, t } = useI18n();
+  const router = useRouter();
+  const pathname = usePathname();
 
   return (
     <article className="project-card animate-rise" style={{ animationDelay: "120ms" }}>
@@ -34,11 +38,40 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </ul>
 
       <footer className="project-links">
-        {project.links.map((link) => (
-          <a key={link.label} href={link.href} target="_blank" rel="noreferrer">
-            {link.label}
-          </a>
-        ))}
+        {project.links.map((link) => {
+          const isHash = link.href.startsWith("#");
+          if (isHash) {
+            const target = `/projects?open=${project.slug}`;
+            return (
+              <a
+                key={link.label}
+                href={target}
+                onClick={(e) => {
+                  e.preventDefault();
+                  // if already on projects page, open gallery directly
+                  if (pathname === "/projects" && onOpenGallery) {
+                    onOpenGallery(project);
+                    return;
+                  }
+                  // otherwise navigate to projects with query param
+                  router.push(target);
+                }}
+              >
+                {link.label}
+              </a>
+            );
+          }
+
+          return isHash ? (
+            <a key={link.label} href={link.href}>
+              {link.label}
+            </a>
+          ) : (
+            <a key={link.label} href={link.href} target="_blank" rel="noreferrer">
+              {link.label}
+            </a>
+          );
+        })}
       </footer>
     </article>
   );
