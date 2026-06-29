@@ -5,7 +5,7 @@ import { useI18n } from "@/contexts/I18nContext";
 import { projects } from "@/lib/projects";
 import { useState, useEffect } from "react";
 import GalleryModal from "@/components/GalleryModal";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function ProjectsPage() {
   const { t } = useI18n();
@@ -28,21 +28,24 @@ export default function ProjectsPage() {
     setGalleryOpen(true);
   };
 
-  const searchParams = useSearchParams();
   const router = useRouter();
 
   useEffect(() => {
-    const slug = searchParams?.get("open");
+    // read query param from the actual browser location to avoid Next prerender CSR bailout
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get("open");
     if (slug) {
       const project = projects.find((p) => p.slug === slug);
       if (project) {
         openGalleryForProject(project);
         // remove query param to avoid reopening on back/refresh
+        // use replace so history isn't cluttered
         router.replace("/projects");
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams]);
+  }, []);
 
   return (
     <main>
