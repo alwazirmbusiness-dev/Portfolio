@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { I18nProvider } from "@/contexts/I18nContext";
 import { SiteChrome } from "@/components/SiteChrome";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const inter = Inter({ variable: "--font-sans", subsets: ["latin"] });
@@ -37,6 +38,7 @@ export default function RootLayout({
         <I18nProvider>
           <SiteChrome>{children}</SiteChrome>
         </I18nProvider>
+        <Analytics />
       </body>
     </html>
   );
